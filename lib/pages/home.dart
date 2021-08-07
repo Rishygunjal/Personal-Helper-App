@@ -8,6 +8,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
 
   Map data = {};
+  int $deg = 0x00B0;
 
 //  @override
 //  void initState() {
@@ -20,16 +21,16 @@ class _HomeState extends State<Home> {
     data = data.isNotEmpty ? data : ModalRoute.of(context).settings.arguments;
 
     // set background image
-    String bgImage = data['isDaytime'] ? 'day.png' : 'night.png';
-    Color bgColor = data['isDaytime'] ? Colors.blue : Colors.indigo[700];
+    // String bgImage = data['isDaytime'] ? 'day.png' : 'night.png';
+    // Color bgColor = data['isDaytime'] ? Colors.blue : Colors.indigo[700];
 
     return Scaffold(
-      backgroundColor: bgColor,
+      backgroundColor: Colors.blue,
       body: SafeArea(
         child: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('assets/$bgImage'),
+              image: AssetImage('assets/day.png'),
               fit: BoxFit.cover,
             )
           ),
@@ -39,17 +40,17 @@ class _HomeState extends State<Home> {
               children: <Widget>[
                 FlatButton.icon(
                   onPressed: () async {
-                    dynamic result = await Navigator.pushNamed(context, '/location');
-                    if(result != null){
-                      setState(() {
-                        data = {
-                          'time': result['time'],
-                          'location': result['location'],
-                          'isDaytime': result['isDaytime'],
-                          'flag': result['flag']
-                        };
-                      });
-                    }
+                    // dynamic result = await Navigator.pushNamed(context, '/loading');
+                    // if(result != null){
+                    //   setState(() {
+                    //     data = {
+                    //       'time': result['time'],
+                    //       'location': result['location'],
+                    //       'isDaytime': result['isDaytime'],
+                    //       'flag': result['flag']
+                    //     };
+                    //   });
+                    // }
                   },
                   icon: Icon(
                     Icons.edit_location,
@@ -77,8 +78,9 @@ class _HomeState extends State<Home> {
                   ],
                 ),
                 SizedBox(height: 20.0),
+
                 Text(
-                  data['time'],
+                  data['weather'],
                   style: TextStyle(
                     fontSize: 66.0,
                     color: Colors.white
