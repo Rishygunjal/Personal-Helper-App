@@ -1,4 +1,4 @@
-# assignment_3
+# Personal Helper App
 
 A new Flutter project.
 
